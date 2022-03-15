@@ -58,7 +58,6 @@ public class ProdutoDAO {
 
 	public List<Produto> listar() throws SQLException {
 		List<Produto> produtos = new ArrayList<Produto>();
-
 		String sql = "SELECT ID, NOME, DESCRICAO FROM PRODUTO";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {
@@ -71,9 +70,6 @@ public class ProdutoDAO {
 
 	public List<Produto> buscar(Categoria ct) throws SQLException {
 		List<Produto> produtos = new ArrayList<Produto>();
-
-		System.out.println("Executando a query de buscar produto por categoria");
-
 		String sql = "SELECT ID, NOME, DESCRICAO FROM PRODUTO WHERE CATEGORIA_ID = ?";
 
 		try (PreparedStatement pstm = connection.prepareStatement(sql)) {

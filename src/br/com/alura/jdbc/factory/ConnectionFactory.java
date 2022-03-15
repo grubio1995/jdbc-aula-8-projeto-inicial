@@ -1,4 +1,5 @@
 package br.com.alura.jdbc.factory;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -14,12 +15,16 @@ public class ConnectionFactory {
 		ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
 		comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost/loja_virtual?useTimezone=true&serverTimezone=UTC");
 		comboPooledDataSource.setUser("root");
-		comboPooledDataSource.setPassword("root");
+		comboPooledDataSource.setPassword("1234");
 
 		this.dataSource = comboPooledDataSource;
 	}
 
-	public Connection recuperarConexao() throws SQLException {
-		return this.dataSource.getConnection();
+	public Connection recuperarConexao() {
+		try {
+			return this.dataSource.getConnection();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
