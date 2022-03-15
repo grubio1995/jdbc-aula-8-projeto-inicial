@@ -39,7 +39,7 @@ public class CategoriaDAO {
 		return categorias;
 	}
 
-	public List<Categoria> listarComProduto() throws SQLException {
+	public List<Categoria> listarComProduto() {
 		Categoria ultima = null;
 		List<Categoria> categorias = new ArrayList<>();
 
@@ -62,6 +62,8 @@ public class CategoriaDAO {
 				}
 			}
 			return categorias;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
 }
